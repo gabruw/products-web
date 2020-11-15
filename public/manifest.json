@@ -1,6 +1,6 @@
 {
-    "short_name": "Enade",
-    "name": "Uma aplicação para auxilio de estudos online",
+    "short_name": "Products",
+    "name": "Uma aplicação para gerenciamento de produtos e pedidos",
     "icons": [
         {
             "src": "favicon.ico",
