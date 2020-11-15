@@ -1,8 +1,8 @@
 //#region Imports
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import ButtonUI from 'components/ButtonUI';
 import FieldWrapper from 'components/FieldWrapper';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -33,7 +33,7 @@ const FormLogin = () => {
                     label={LOGIN_LABELS.PASSWORD}
                 />
 
-                <Button type='submit'>Entrar</Button>
+                <ButtonUI type='submit'>Entrar</ButtonUI>
             </form>
         </FormProvider>
     );
