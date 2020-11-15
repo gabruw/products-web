@@ -5,6 +5,6 @@ import React from 'react';
 
 //#endregion
 
-const App = () => <></>;
+const App = () => <AppRoutes />;
 
 export default App;
