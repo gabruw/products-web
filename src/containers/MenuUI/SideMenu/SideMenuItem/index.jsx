@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import SIDEMENU_OPTIONS from 'utils/constants/side-menu';
 import useStyles from './styles';
@@ -15,7 +15,7 @@ const SideMenuItem = ({ isTop = false }) => {
     const styles = useStyles();
     const history = useHistory();
 
-    const options = isTop ? SIDEMENU_OPTIONS.TOP : SIDEMENU_OPTIONS.BOTTOM;
+    const options = useMemo(() => (isTop ? SIDEMENU_OPTIONS.TOP : SIDEMENU_OPTIONS.BOTTOM), [isTop]);
 
     return (
         <List>

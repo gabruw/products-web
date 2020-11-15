@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import React from 'react';
+import React, { useCallback } from 'react';
 import SideMenuItem from './SideMenuItem';
 import useStyles, { useClasses } from './styles';
 
@@ -17,9 +17,7 @@ const SideMenu = ({ open, setOpen }) => {
     const styles = useStyles();
     const classes = useClasses();
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+    const handleDrawerClose = useCallback(() => setOpen(false), [setOpen]);
 
     return (
         <Drawer

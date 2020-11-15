@@ -3,6 +3,7 @@ const USER_FIELDS = {
     CPF: 'cpf',
     NAME: 'name',
     COD: 'codigo',
+    TOKEN: 'token',
     BIRTH: 'dataNascimento'
 };
 

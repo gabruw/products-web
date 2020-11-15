@@ -1,14 +1,16 @@
 //#region Imports
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import useStyles from './styles';
+import clsx from 'clsx';
 
 //#endregion
 
-const FieldWrapper = ({ as, name, errors, label, ...rest }) => {
+const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
     const styles = useStyles();
-    const error = errors && errors[name];
+    const error = useMemo(() => errors && errors[name], [errors, name]);
+    const controllerClass = clsx(styles.controller, className);
 
     return (
         <div className={styles.content}>
@@ -16,10 +18,11 @@ const FieldWrapper = ({ as, name, errors, label, ...rest }) => {
                 <Controller
                     as={as}
                     name={name}
-                    error={error}
                     label={label}
                     defaultValue=''
                     variant='outlined'
+                    error={Boolean(error)}
+                    className={controllerClass}
                     {...rest}
                 />
             </div>

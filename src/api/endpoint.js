@@ -1,5 +1,5 @@
 const ENDPOINTS = {
-    BASE_URL: 'http://localhost:44321',
+    BASE_URL: 'https://localhost:44321',
     CUSTOMER: {
         EDIT: 'customer/edit',
         LOGIN: 'customer/login',
