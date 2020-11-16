@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Logo from 'assets/images/logo.png';
 import ButtonUI from 'components/ButtonUI';
-import DateField from 'components/DateField';
 import FieldWrapper from 'components/FieldWrapper';
 import MessageBox from 'containers/MessageBox';
 import React, { useCallback } from 'react';
@@ -20,6 +19,7 @@ import LOGIN_LABELS from 'utils/constants/label/login';
 import USER_LABELS from 'utils/constants/label/user';
 import useRequestState from 'utils/hooks/useRequestState';
 import { postUser } from './../services/send-data';
+import FieldBirthDate from './FieldBirthDate/index';
 import userSchema from './schema';
 import useStyles from './styles';
 
@@ -79,7 +79,7 @@ const FormLogin = ({ setIsLogin }) => {
                     </div>
 
                     <div className={styles.spacing}>
-                        <DateField errors={errors} name={USER_FIELDS.BIRTH} label={USER_LABELS.BIRTH} />
+                        <FieldBirthDate errors={errors} />
                     </div>
 
                     <div className={styles.spacing}>

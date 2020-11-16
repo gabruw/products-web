@@ -26,9 +26,9 @@ const DateField = ({ as, name, errors, label, className, ...rest }) => {
                         disableToolbar
                         variant='inline'
                         format='dd/MM/yyyy'
+                        className={dateClass}
                         error={Boolean(error)}
                         inputVariant='outlined'
-                        className={dateClass}
                         {...rest}
                     />
                 </MuiPickersUtilsProvider>
