@@ -22,9 +22,9 @@ const SideMenuItem = ({ isTop = false }) => {
             {options.map(({ text, icon: Icon, path }, index) => (
                 <ListItem key={index} onClick={() => history.push(path)} button>
                     <ListItemIcon>
-                        <Icon className={styles.icon} />
+                        <Icon className={styles.content} />
                     </ListItemIcon>
-                    <ListItemText className={styles.text} primary={text} />
+                    <ListItemText className={styles.content} primary={text} />
                 </ListItem>
             ))}
         </List>

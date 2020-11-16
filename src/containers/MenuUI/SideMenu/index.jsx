@@ -31,15 +31,20 @@ const SideMenu = ({ open, setOpen }) => {
         >
             <div className={styles.drawerHeader}>
                 <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    {theme.direction === 'ltr' ? (
+                        <ChevronLeftIcon className={styles.icon} />
+                    ) : (
+                        <ChevronRightIcon className={styles.icon} />
+                    )}
                 </IconButton>
             </div>
 
-            <Divider />
+            <Divider classes={{ root: classes.divider }} />
             <SideMenuItem isTop />
 
-            <Divider />
+            <Divider classes={{ root: classes.divider }} />
             <SideMenuItem />
+            <Divider classes={{ root: classes.divider }} />
         </Drawer>
     );
 };

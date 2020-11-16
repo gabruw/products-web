@@ -3,7 +3,8 @@ const ROUTE_NAME = {
         DEFAULT: '/',
         HOME: '/home',
         LOGIN: '/login',
-        ERROR: '/error'
+        ERROR: '/error',
+        REGISTER: '/register'
     },
     IN: {
         HOME: '/system/home',

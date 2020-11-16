@@ -8,3 +8,7 @@ import ENDPOINTS from 'api/endpoint';
 export const postLogin = (data) => {
     return API.post(ENDPOINTS.CUSTOMER.LOGIN, data);
 };
+
+export const postUser = (data) => {
+    return API.post(ENDPOINTS.CUSTOMER.INCLUDE, data);
+};

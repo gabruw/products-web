@@ -6,10 +6,21 @@ import ALIGN from 'assets/styles/align';
 //#endregion
 
 const useStyles = makeStyles(() => ({
-    container: {
-        width: '100%',
-        height: '100vh',
+    paper: {
+        width: 400,
+        height: 600,
         ...ALIGN.CENTER
+    },
+    img: {
+        width: 120,
+        height: 120
+    },
+    spacing: {
+        marginBottom: 25,
+        ...ALIGN.CENTER
+    },
+    button: {
+        width: 240
     }
 }));
 

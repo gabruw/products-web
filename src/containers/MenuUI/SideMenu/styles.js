@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(0, 1),
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end'
+    },
+    icon: {
+        color: '#FFFFFF'
     }
 }));
 
@@ -26,6 +29,9 @@ export const useClasses = makeStyles(() => ({
     drawerPaper: {
         width: 240,
         background: COLOR.GRAY.DARK
+    },
+    divider: {
+        background: COLOR.GRAY.LIGHTEST
     }
 }));
 
