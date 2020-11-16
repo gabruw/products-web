@@ -98,9 +98,9 @@ const FormLogin = ({ setIsLogin }) => {
                             Login
                         </ButtonUI>
                     </div>
-                </form>
 
-                <MessageBox title='Erro ao logar' errors={requestState.errors} />
+                    <MessageBox title='Erro ao se cadastrar' errors={requestState.errors} />
+                </form>
             </FormProvider>
         </Paper>
     );
