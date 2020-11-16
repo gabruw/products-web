@@ -1,11 +1,10 @@
 //#region Imports
 
 import React from 'react';
+import FormEdit from './FormEdit';
 
 //#endregion
 
-const User = () => {
-    return <></>;
-};
+const User = () => <FormEdit />;
 
 export default User;

@@ -44,13 +44,7 @@ const TopMenu = ({ open, setOpen }) => {
     return (
         <AppBar position='fixed' className={appBarClass}>
             <Toolbar>
-                <IconButton
-                    edge='start'
-                    color='inherit'
-                    aria-label='open drawer'
-                    className={iconButtonClass}
-                    onClick={() => setOpen(true)}
-                >
+                <IconButton edge='start' color='inherit' className={iconButtonClass} onClick={() => setOpen(true)}>
                     <MenuIcon />
                 </IconButton>
 
@@ -78,7 +72,7 @@ const TopMenu = ({ open, setOpen }) => {
                             horizontal: 'right'
                         }}
                         transformOrigin={{
-                            vertical: 'bottom',
+                            vertical: 'top',
                             horizontal: 'right'
                         }}
                     >

@@ -20,7 +20,7 @@ API.interceptors.request.use((config) => {
     const user = JSON.parse(localStorage.getItem([USER_FIELDS.THIS]));
 
     if (user && user.token) {
-        config.headers.Authorization = user.token;
+        config.headers.Authorization = `Bearer ${user.token}`;
     }
 
     return config;

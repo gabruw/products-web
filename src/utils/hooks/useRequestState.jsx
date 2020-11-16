@@ -29,14 +29,11 @@ const useRequestState = () => {
             try {
                 const { data: result } = await callback();
 
-                const token = result.token;
-                const response = result.response;
-
                 responseObj = {
                     ...initalState,
                     success: true,
-                    errors: response.errors,
-                    data: { ...response.data, token }
+                    errors: result.errors,
+                    data: { ...result.data, token: result.token }
                 };
             } catch (error) {
                 if (options?.autoClear) {
