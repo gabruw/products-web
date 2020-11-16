@@ -13,10 +13,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Logo from 'assets/images/logo.png';
 import clsx from 'clsx';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
-import useSystemReducer from 'storage/system/reducer';
+import useSystemContext from 'storage/system/context';
 import USER_FIELDS from 'utils/constants/field/user';
 import useStyles from './styles';
 
@@ -27,14 +27,19 @@ const TopMenu = ({ open, setOpen }) => {
     const history = useHistory();
 
     const [menu, setMenu] = useState(null);
-    const { user, removeUser } = useSystemReducer();
+    const { user, removeUser } = useSystemContext();
 
-    const name = useMemo(() => user && String(user[USER_FIELDS.NAME]).split(' ')[0], []);
+    const name = useMemo(() => user && String(user[USER_FIELDS.NAME]).split(' ')[0], [user]);
 
     const iconButtonClass = clsx(styles.menuButton, open && styles.hide);
     const appBarClass = clsx(styles.appBar, {
         [styles.appBarShift]: open
     });
+
+    const logout = useCallback(() => {
+        removeUser();
+        history.push(ROUTE_NAME.OUT.LOGIN);
+    }, [removeUser, history]);
 
     return (
         <AppBar position='fixed' className={appBarClass}>
@@ -84,7 +89,7 @@ const TopMenu = ({ open, setOpen }) => {
 
                         <Divider />
 
-                        <MenuItem onClick={() => removeUser()}>
+                        <MenuItem onClick={() => logout()}>
                             <LocalHotelIcon />
                             Logout
                         </MenuItem>

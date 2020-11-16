@@ -7,17 +7,20 @@ import FieldWrapper from 'components/FieldWrapper';
 import MessageBox from 'containers/MessageBox';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import ROUTE_NAME from 'routes/route-name';
+import useSystemContext from 'storage/system/context';
 import LOGIN_FIELDS from 'utils/constants/field/login';
 import LOGIN_LABELS from 'utils/constants/label/login';
 import useRequestState from 'utils/hooks/useRequestState';
 import { postLogin } from './../services/send-data';
 import loginSchema from './schema';
-import useSystemReducer from 'storage/system/reducer';
 
 //#endregion
 
 const FormLogin = () => {
-    const { user, addUser } = useSystemReducer();
+    const history = useHistory();
+    const { addUser } = useSystemContext();
 
     const methods = useForm({
         reValidateMode: 'onBlur',
@@ -29,13 +32,14 @@ const FormLogin = () => {
     const onSubmit = useCallback(
         async (data) => {
             const response = await run(() => postLogin(data));
-            addUser(response.data);
+            if (response.success) {
+                addUser(response.data);
+                history.push(ROUTE_NAME.IN.HOME);
+            }
         },
-        [run, addUser]
+        [run, addUser, history]
     );
 
-    console.log(requestState);
-    console.log('user', user);
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>

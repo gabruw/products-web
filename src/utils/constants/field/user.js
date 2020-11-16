@@ -1,7 +1,7 @@
 const USER_FIELDS = {
     THIS: 'user',
     CPF: 'cpf',
-    NAME: 'name',
+    NAME: 'nome',
     COD: 'codigo',
     TOKEN: 'token',
     BIRTH: 'dataNascimento'
