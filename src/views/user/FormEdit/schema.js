@@ -2,7 +2,7 @@
 
 import LOGIN_FIELDS from 'utils/constants/field/login';
 import USER_FIELDS from 'utils/constants/field/user';
-import yup from 'utils/validations/yup';
+import yup from 'utils/validations/yup/yup';
 
 //#endregion
 

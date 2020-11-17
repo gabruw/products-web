@@ -26,4 +26,12 @@ API.interceptors.request.use((config) => {
     return config;
 });
 
+API.interceptors.response.use((config) => {
+    if (config.status === 401) {
+        localStorage.clear();
+    }
+
+    return config;
+});
+
 export default API;

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         alignItems: 'flex-start',
         ...ALIGN.LEFT
     },
-    controller: {
+    component: {
         width: '100%'
     },
     error: {

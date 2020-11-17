@@ -1,6 +1,9 @@
 //#region Imports
 
 import { useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import ROUTE_NAME from 'routes/route-name';
+import useSystemContext from 'storage/system/context';
 import sleep from 'utils/functions/sleep';
 
 //#endregion
@@ -13,6 +16,8 @@ const initalState = {
 };
 
 const useRequestState = () => {
+    const history = useHistory();
+    const { removeUser } = useSystemContext();
     const [requestState, setRequestState] = useState(initalState);
 
     const clear = useCallback((timeout = 100) => setTimeout(() => setRequestState(initalState), timeout), []);
@@ -27,29 +32,36 @@ const useRequestState = () => {
 
             let responseObj = null;
             try {
-                const { data: result } = await callback();
+                const { data } = await callback();
 
                 responseObj = {
                     ...initalState,
                     success: true,
-                    errors: result.errors,
-                    data: { ...result.data, token: result.token }
+                    data: data.data,
+                    token: data.token,
+                    errors: data.errors
                 };
             } catch (error) {
+                const hadError = error && error.response;
+                if (hadError && error.response.status === 401) {
+                    removeUser();
+                    history.push([ROUTE_NAME.OUT.DEFAULT]);
+                }
+
                 if (options?.autoClear) {
                     clear(5000);
                 }
 
                 responseObj = {
                     ...initalState,
-                    errors: error.response && error.response.data ? error.response.data.errors : error
+                    errors: hadError && error.response.data ? error.response.data.errors : error
                 };
             }
 
             setRequestState(responseObj);
             return responseObj;
         },
-        [clear]
+        [removeUser, history, clear]
     );
 
     return {

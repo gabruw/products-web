@@ -38,7 +38,7 @@ const FormLogin = ({ setIsLogin }) => {
         async (data) => {
             const response = await run(() => postLogin(data));
             if (response.success) {
-                addUser(response.data);
+                addUser({ ...response.data, token: response.token });
                 history.push(ROUTE_NAME.IN.HOME);
             }
         },

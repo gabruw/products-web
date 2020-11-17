@@ -64,8 +64,8 @@ const TopMenu = ({ open, setOpen }) => {
 
                     <Menu
                         keepMounted
-                        open={menu}
-                        anchorEl={menu}
+                        open={Boolean(menu)}
+                        anchorEl={Boolean(menu)}
                         onClose={() => setMenu(false)}
                         anchorOrigin={{
                             vertical: 'top',

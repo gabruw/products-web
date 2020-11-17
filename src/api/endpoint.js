@@ -1,21 +1,26 @@
+//#region Imports
+
+import buildQueryParams from 'utils/functions/buildQueryParams';
+
+//#endregion
+
 const ENDPOINTS = {
     BASE_URL: 'https://localhost:44321',
     CUSTOMER: {
-        EDIT: 'customer/edit',
         LOGIN: 'customer/login',
-        REMOVE: 'customer/remove',
-        INCLUDE: 'customer/include'
+        INCLUDE: 'customer/include',
+        REMOVE: (codigo) => `customer/remove?${buildQueryParams({ codigo })}`
     },
     PRODUCT: {
         EDIT: 'product/edit',
         GET_ALL: 'product/all',
-        REMOVE: 'product/remove',
-        INCLUDE: 'product/include'
+        INCLUDE: 'product/include',
+        REMOVE: (codigo) => `product/remove?${buildQueryParams({ codigo })}`
     },
     ORDER: {
         EDIT: 'order/edit',
-        REMOVE: 'order/remove',
-        INCLUDE: 'order/include'
+        INCLUDE: 'order/include',
+        REMOVE: (codigo) => `order/remove?${buildQueryParams({ codigo })}`
     }
 };
 

@@ -1,29 +1,38 @@
 //#region Imports
 
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import Divider from '@material-ui/core/Divider';
 import Modal from '@material-ui/core/Modal';
-import React from 'react';
-import useStyles from './styles';
+import Typography from '@material-ui/core/Typography';
+import React, { Fragment, useCallback, useEffect } from 'react';
+import useStyles, { useClasses } from './styles';
 
 //#endregion
 
-const ModalUI = ({ children, modalRef }) => {
+const ModalUI = ({ modalRef, title = '', onClose, children }) => {
     const styles = useStyles();
+    const classes = useClasses();
+
     const [open, setOpen] = React.useState(false);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setOpen(false);
-    };
+    }, [setOpen]);
 
     useEffect(() => {
         if (modalRef && !modalRef.current) {
             modalRef.current = {
-                open: () => setOpen(true),
+                show: () => setOpen(true),
                 hide: () => handleClose()
             };
         }
     }, [modalRef, setOpen, handleClose]);
+
+    useEffect(() => {
+        return () => {
+            onClose && onClose();
+        };
+    }, [onClose]);
 
     return (
         <Modal
@@ -36,9 +45,23 @@ const ModalUI = ({ children, modalRef }) => {
                 timeout: 500
             }}
         >
-            <Fade in={open}>
-                <div className={styles.paper}>{children}</div>
-            </Fade>
+            <Fragment>
+                <div className={styles.paper}>
+                    <div className={styles.header}>
+                        <div className={styles.row}>
+                            <Typography variant='h2' color='primary'>
+                                {title}
+                            </Typography>
+                        </div>
+
+                        <div className={styles.row}>
+                            <Divider className={styles.divider} classes={{ root: classes.divider }} />
+                        </div>
+                    </div>
+
+                    <div className={styles.modal}>{children}</div>
+                </div>
+            </Fragment>
         </Modal>
     );
 };
