@@ -16,7 +16,7 @@ const Product = () => (
 );
 
 const Provider = () => {
-    const { list, show, select, modalRef, researchProducts } = useProductContext();
+    const { list, show, select, loading, modalRef, researchProducts } = useProductContext();
 
     useEffect(() => {
         researchProducts();
@@ -28,7 +28,7 @@ const Provider = () => {
                 <FormProduct />
             </ModalUI>
 
-            <ContentBox title='Produtos' research={researchProducts} add={show}>
+            <ContentBox title='Produtos' research={researchProducts} add={show} loading={loading}>
                 <ProductList list={list} />
             </ContentBox>
         </Fragment>

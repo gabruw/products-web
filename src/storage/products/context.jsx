@@ -11,7 +11,8 @@ const ProductContext = createContext();
 
 const initialState = {
     list: [],
-    selected: null
+    selected: null,
+    loading: false
 };
 
 export const ProductContextProvider = ({ children }) => {
@@ -24,7 +25,7 @@ export const ProductContextProvider = ({ children }) => {
     const show = useCallback(() => modalRef.current && modalRef.current.show(), [modalRef]);
     const hide = useCallback(() => modalRef.current && modalRef.current.hide(), [modalRef]);
 
-    const add = useCallback(
+    const setList = useCallback(
         (data) => {
             setState((prevState) => ({
                 ...prevState,
@@ -34,7 +35,7 @@ export const ProductContextProvider = ({ children }) => {
         [setState]
     );
 
-    const select = useCallback(
+    const setSelect = useCallback(
         (cod) => {
             setState((prevState) => ({
                 ...prevState,
@@ -44,23 +45,38 @@ export const ProductContextProvider = ({ children }) => {
         [setState]
     );
 
+    const setLoading = useCallback(() => {
+        setState((prevState) => ({
+            ...prevState,
+            loading: !prevState.loading
+        }));
+    }, [setState]);
+
     const researchProducts = useCallback(() => {
+        setLoading();
+
         fetchProducts().then(({ data }) => {
-            add(data);
+            setList(data);
         });
-    }, [fetchProducts, add]);
+
+        setLoading();
+    }, [setLoading, fetchProducts, setList]);
 
     return (
-        <ProductContext.Provider value={{ show, hide, add, select, researchProducts, modalRef, state }}>
+        <ProductContext.Provider
+            value={{ show, hide, setList, setSelect, setLoading, researchProducts, modalRef, state }}
+        >
             {children}
         </ProductContext.Provider>
     );
 };
 
 const useProductContext = () => {
-    const { show, hide, add, select, researchProducts, modalRef, state } = useContext(ProductContext);
+    const { show, hide, setList, setSelect, setLoading, researchProducts, modalRef, state } = useContext(
+        ProductContext
+    );
 
-    return { show, hide, add, select, researchProducts, modalRef, ...state };
+    return { show, hide, setList, setSelect, setLoading, researchProducts, modalRef, ...state };
 };
 
 export default useProductContext;

@@ -16,7 +16,7 @@ const ProductList = () => {
 
     const edit = useCallback(
         (cod) => {
-            select(cod);
+            setSelect(cod);
             show();
         },
         [select, show]

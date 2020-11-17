@@ -4,12 +4,13 @@ import AddIcon from '@material-ui/icons/Add';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 import ButtonUI from 'components/ButtonUI';
 import ContextBox from 'components/ContextBox';
+import Loader from 'components/Loader';
 import React, { useMemo } from 'react';
 import useStyles from './styles';
 
 //#endregion
 
-const ContentBox = ({ title, children, research, add }) => {
+const ContentBox = ({ title, children, research, add, loading }) => {
     const styles = useStyles();
     const buttonText = useMemo(() => `Adicionar ${title}`, [title]);
 
@@ -17,19 +18,20 @@ const ContentBox = ({ title, children, research, add }) => {
         <ContextBox title={title}>
             <div className={styles.buttonContent}>
                 <div className={styles.left}>
-                    <ButtonUI className={styles.button} onClick={async () => await research()}>
+                    <ButtonUI className={styles.button} isLoading={loading} onClick={async () => await research()}>
                         <RotateLeftIcon className={styles.icon} />
                     </ButtonUI>
                 </div>
 
                 <div className={styles.right} onClick={() => add()}>
-                    <ButtonUI className={styles.button} startIcon={<AddIcon />}>
+                    <ButtonUI className={styles.button} isDisabled={loading} startIcon={<AddIcon />}>
                         {buttonText}
                     </ButtonUI>
                 </div>
             </div>
 
-            {children}
+            {!loading && children}
+            <Loader isLoading={loading} />
         </ContextBox>
     );
 };
