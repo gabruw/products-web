@@ -15,14 +15,14 @@ const IconButtonWithoutBlank = withStyles({
     }
 })(IconButton);
 
-const IconButtonAccordion = ({ text, icon, onClick }) => {
+const IconButtonAccordion = ({ text, icon, color = 'primary', onClick }) => {
     const styles = useStyles();
 
     return (
-        <IconButtonWithoutBlank aria-label='button-accordion' onClick={(e) => onClickAccordion(e, () => onClick())}>
+        <IconButtonWithoutBlank onClick={(e) => onClickAccordion(e, () => onClick())}>
             <div className={styles.btnAlign}>
                 {icon}
-                <Typography variant='subtitle1' color='primary'>
+                <Typography variant='subtitle1' color={color}>
                     {text}
                 </Typography>
             </div>

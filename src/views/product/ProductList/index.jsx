@@ -12,14 +12,14 @@ import { deleteProduct } from '../services/send-data';
 
 const ProductList = () => {
     const { run } = useRequestState();
-    const { show, select, list, researchProducts } = useProductContext();
+    const { show, setSelect, list, researchProducts } = useProductContext();
 
     const edit = useCallback(
         (cod) => {
             setSelect(cod);
             show();
         },
-        [select, show]
+        [setSelect, show]
     );
 
     const remove = useCallback(

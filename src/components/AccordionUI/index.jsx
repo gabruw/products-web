@@ -41,6 +41,7 @@ const AccordionUI = ({ title, value, edit, remove, children }) => {
 
                     <IconButtonAccordion
                         text='Remover'
+                        color='secondary'
                         onClick={() => remove(value.codigo)}
                         icon={<DeleteIcon color='secondary' />}
                     />
