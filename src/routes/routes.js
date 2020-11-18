@@ -1,49 +1,55 @@
 //#region Imports
 
 import ROUTE_NAME from './route-name';
+import Login from 'views/login';
+import Home from 'views/home';
+import Product from 'views/product';
+import Order from 'views/order';
+import User from 'views/user';
+import Error from 'views/error';
 
 //#endregion
 
 const ROUTES = [
     {
-        path: '/',
         exact: true,
-        component: require('../views/login').default
+        component: Login,
+        path: '/'
     },
     {
         exact: true,
-        path: ROUTE_NAME.OUT.AUTHENTICATION,
-        component: require('../views/login').default
+        component: Login,
+        path: ROUTE_NAME.OUT.LOGIN
     },
     {
         exact: true,
-        path: ROUTE_NAME.OUT.HOME,
-        component: require('../views/login').default
+        component: Login,
+        path: ROUTE_NAME.OUT.HOME
     },
     {
         exact: true,
-        path: ROUTE_NAME.IN.HOME,
-        component: require('../views/home').default
+        component: Home,
+        path: ROUTE_NAME.IN.HOME
     },
     {
         exact: true,
-        path: ROUTE_NAME.IN.PRODUCT,
-        component: require('../views/product').default
+        component: Product,
+        path: ROUTE_NAME.IN.PRODUCT
     },
     {
         exact: true,
-        path: ROUTE_NAME.IN.ORDER,
-        component: require('../views/order').default
+        component: Order,
+        path: ROUTE_NAME.IN.ORDER
     },
     {
         exact: true,
-        path: ROUTE_NAME.IN.USER,
-        component: require('../views/user').default
+        component: User,
+        path: ROUTE_NAME.IN.USER
     },
     {
-        path: '*',
         exact: true,
-        component: require('../views/error').default
+        component: Error,
+        path: '*'
     }
 ];
 

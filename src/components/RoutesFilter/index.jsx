@@ -11,10 +11,7 @@ const RoutesFilter = ({ children }) => {
     const { canEnter } = useCheckCredentials();
     const isntSystemRoute = useMemo(() => verifyRoute(), []);
 
-    return isntSystemRoute
-        ? children
-        : // canEnter()
-          true && <MenuUI>{children}</MenuUI>;
+    return isntSystemRoute ? children : canEnter() && <MenuUI>{children}</MenuUI>;
 };
 
 export default RoutesFilter;

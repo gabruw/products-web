@@ -1,26 +1,37 @@
 //#region Imports
 
-import React from 'react';
+import clsx from 'clsx';
+import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import useStyles from './styles';
 
 //#endregion
 
-const FieldWrapper = ({ as, name, errors, label, ...rest }) => {
+const FieldWrapper = ({ as: Component, name, errors, label, className, normalizer, mask, ...rest }) => {
     const styles = useStyles();
-    const error = errors && errors[name];
+
+    const componentClass = clsx(styles.component, className);
+    const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
         <div className={styles.content}>
             <div className={styles.field}>
                 <Controller
-                    as={as}
                     name={name}
-                    error={error}
-                    label={label}
                     defaultValue=''
-                    variant='outlined'
-                    {...rest}
+                    render={(props) => (
+                        <Component
+                            {...props}
+                            label={label}
+                            variant='outlined'
+                            error={Boolean(error)}
+                            className={componentClass}
+                            InputProps={{
+                                inputComponent: mask
+                            }}
+                            {...rest}
+                        />
+                    )}
                 />
             </div>
 

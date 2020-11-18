@@ -1,14 +1,21 @@
 const COLOR = {
-    LIGHT_RED: '#F23054',
-    MEDIUM_RED: '#C83315',
-    DARK_RED: '#A63247',
-    MEDIUM_GREY: '#393E40',
-    DARK_GREY: '#2E3732',
-    MEDIUM_WHITE: '#F1F2E9'
-};
-
-export const SHADOW = {
-    DARK_GREY: '#616161'
+    BLUE: {
+        DARK: '#25274D',
+        LIGHT: '#2E9CCA',
+        MEDIUM: '#29648A'
+    },
+    YELLOW: {
+        DARK: '#F6BB0A',
+        LIGHT: '#F9D342',
+        MEDIUM: '#FFE01B'
+    },
+    GRAY: {
+        DARK: '#464866',
+        LIGHT: '#AAABB8',
+        MEDIUM: '#393E40',
+        DARKEST: '#2E3732',
+        LIGHTEST: '#F1F2E9'
+    }
 };
 
 export default COLOR;

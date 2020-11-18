@@ -7,15 +7,21 @@ import ALIGN from 'assets/styles/align';
 
 const useStyles = makeStyles({
     content: {
+        width: 240,
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         ...ALIGN.LEFT
     },
     field: {
+        width: '100%',
         alignItems: 'flex-start',
         ...ALIGN.LEFT
     },
+    component: {
+        width: '100%'
+    },
     error: {
+        width: '100%',
         color: 'red',
         flexWrap: 'wrap',
         alignItems: 'flex-start',

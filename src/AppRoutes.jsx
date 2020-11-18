@@ -10,8 +10,8 @@ import ROUTES from 'routes/routes';
 const AppRoutes = () => (
     <BrowserRouter>
         <Switch>
-            {ROUTES.map(({ path, exact, component: Component }) => (
-                <Route key={path} path={path} exact={exact}>
+            {ROUTES.map(({ path, exact, component: Component }, index) => (
+                <Route key={index} path={path} exact={exact}>
                     <RoutesFilter>
                         <Component />
                     </RoutesFilter>
