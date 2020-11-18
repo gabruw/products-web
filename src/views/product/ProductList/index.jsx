@@ -3,7 +3,7 @@
 import AccordionUI from 'components/AccordionUI';
 import MessageBox from 'containers/MessageBox';
 import React, { useCallback } from 'react';
-import useProductContext from 'storage/products/context';
+import useProductContext from 'storage/product/context';
 import useRequestState from 'utils/hooks/useRequestState';
 import ProductDetails from '../ProductDetails';
 import { deleteProduct } from '../services/send-data';

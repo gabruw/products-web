@@ -1,7 +1,6 @@
 //#region Imports
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Height } from '@material-ui/icons';
 import ALIGN from 'assets/styles/align';
 import COLOR from 'utils/constants/color';
 
@@ -13,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         outline: 0,
-        minWidth: 600,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+        minWidth: ({ width = 600 }) => width,
         backgroundColor: theme.palette.background.paper,
         ...ALIGN.COLUMN
     },
@@ -28,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
     divider: {
         height: 2,
+        marginTop: 10,
         width: '100%'
     }
 }));

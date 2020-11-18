@@ -3,7 +3,7 @@
 import ContentBox from 'containers/ContentBox';
 import ModalUI from 'containers/ModalUI';
 import React, { Fragment, useEffect } from 'react';
-import useProductContext, { ProductContextProvider } from 'storage/products/context';
+import useProductContext, { ProductContextProvider } from 'storage/product/context';
 import FormProduct from './FormProduct';
 import ProductList from './ProductList';
 

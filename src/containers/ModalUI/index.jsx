@@ -9,8 +9,8 @@ import useStyles, { useClasses } from './styles';
 
 //#endregion
 
-const ModalUI = ({ modalRef, title = '', onClose, children }) => {
-    const styles = useStyles();
+const ModalUI = ({ modalRef, title = '', onClose, width, children }) => {
+    const styles = useStyles({ width });
     const classes = useClasses();
 
     const [open, setOpen] = React.useState(false);

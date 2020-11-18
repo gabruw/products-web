@@ -20,7 +20,8 @@ const ENDPOINTS = {
     ORDER: {
         EDIT: 'order/edit',
         INCLUDE: 'order/include',
-        REMOVE: (codigo) => `order/remove?${buildQueryParams({ codigo })}`
+        REMOVE: (codigo) => `order/remove?${buildQueryParams({ codigo })}`,
+        GET_ALL_CUSTOMER: (cpf) => `order/all-customer?${buildQueryParams({ cpf })}`
     }
 };
 

@@ -8,7 +8,7 @@ import FieldWrapper from 'components/FieldWrapper';
 import MessageBox from 'containers/MessageBox';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import useProductContext from 'storage/products/context';
+import useProductContext from 'storage/product/context';
 import PRODUCT_FIELDS from 'utils/constants/field/product';
 import PRODUCT_LABELS from 'utils/constants/label/product';
 import useRequestState from 'utils/hooks/useRequestState';
