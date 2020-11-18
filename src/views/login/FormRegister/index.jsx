@@ -12,7 +12,6 @@ import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
-import useSystemContext from 'storage/system/context';
 import LOGIN_FIELDS from 'utils/constants/field/login';
 import USER_FIELDS from 'utils/constants/field/user';
 import LOGIN_LABELS from 'utils/constants/label/login';
@@ -28,7 +27,6 @@ import useStyles from './styles';
 const FormLogin = ({ setIsLogin }) => {
     const styles = useStyles();
     const history = useHistory();
-    const { addUser } = useSystemContext();
 
     const methods = useForm({
         reValidateMode: 'onBlur',
@@ -41,11 +39,10 @@ const FormLogin = ({ setIsLogin }) => {
         async (data) => {
             const response = await run(() => postUser(data));
             if (response.success) {
-                addUser(response.data);
-                history.push(ROUTE_NAME.IN.HOME);
+                history.push(ROUTE_NAME.OUT.LOGIN);
             }
         },
-        [run, addUser, history]
+        [run, history]
     );
 
     return (

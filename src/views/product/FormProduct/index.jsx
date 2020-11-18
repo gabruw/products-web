@@ -36,6 +36,7 @@ const FormProduct = () => {
     const { run, requestState } = useRequestState();
     const onSubmit = useCallback(
         async (data) => {
+            data = { ...data, [PRODUCT_FIELDS.VALUE]: Number(data[PRODUCT_FIELDS.VALUE].replace(',', '.')) };
             const response = await run(() => (selected ? putProduct({ ...selected, ...data }) : postProduct(data)));
             !(response.errors && response.errors.length > 0) && hide();
         },

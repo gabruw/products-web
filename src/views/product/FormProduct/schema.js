@@ -8,7 +8,7 @@ import yup, { emptyStringToUndefined } from 'utils/validations/yup/yup';
 const productSchema = yup.object().shape({
     [PRODUCT_FIELDS.BAR_CODE]: yup.string().required().max(255),
     [PRODUCT_FIELDS.DESCRIPTION]: yup.string().required().max(255),
-    [PRODUCT_FIELDS.VALUE]: yup.number().transform(emptyStringToUndefined).required()
+    [PRODUCT_FIELDS.VALUE]: yup.string().transform(emptyStringToUndefined).required()
 });
 
 export default productSchema;
