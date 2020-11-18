@@ -93,7 +93,7 @@ const FormLogin = ({ setIsLogin }) => {
                             color='secondary'
                             className={styles.button}
                             onClick={() => setIsLogin(true)}
-                            isLoading={requestState.isLoading}
+                            isDisabled={requestState.isLoading}
                         >
                             Login
                         </ButtonUI>

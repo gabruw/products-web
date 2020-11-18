@@ -82,7 +82,7 @@ const FormLogin = ({ setIsLogin }) => {
                             color='secondary'
                             className={styles.button}
                             onClick={() => setIsLogin(false)}
-                            isLoading={requestState.isLoading}
+                            isDisabled={requestState.isLoading}
                         >
                             Cadastrar
                         </ButtonUI>
